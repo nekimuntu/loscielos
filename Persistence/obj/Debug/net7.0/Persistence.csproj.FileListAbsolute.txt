@@ -1,0 +1,15 @@
+C:\REACT\loscielos\Persistence\bin\Debug\net7.0\Persistence.deps.json
+C:\REACT\loscielos\Persistence\bin\Debug\net7.0\Persistence.dll
+C:\REACT\loscielos\Persistence\bin\Debug\net7.0\Persistence.pdb
+C:\REACT\loscielos\Persistence\bin\Debug\net7.0\Domain.dll
+C:\REACT\loscielos\Persistence\bin\Debug\net7.0\Domain.pdb
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.csproj.AssemblyReference.cache
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfoInputs.cache
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfo.cs
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.csproj.CoreCompileInputs.cache
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.csproj.CopyComplete
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.dll
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\refint\Persistence.dll
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\Persistence.pdb
+C:\REACT\loscielos\Persistence\obj\Debug\net7.0\ref\Persistence.dll

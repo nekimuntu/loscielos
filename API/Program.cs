@@ -1,3 +1,6 @@
+using Persistence;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<loscielosDbContext>(o=>{
+    o.UseSqlite(builder.Configuration.GetConnectionString("defaultConnection"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,5 +27,17 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+using var scope = app.Services.CreateScope();
+var service = scope.ServiceProvider;
+try
+{
+   var context=service.GetService<loscielosDbContext>();
+   await context.Database.MigrateAsync(); 
+   await Seed.SeedData(context);
+}
+catch (Exception ex)
+{
+    var logger = service.GetService<ILogger<Program>>();
+    logger.LogError(ex,"An error occured during creation of database");
+}
 app.Run();

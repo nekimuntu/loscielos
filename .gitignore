@@ -1,0 +1,7 @@
+GENERAL.md
+*.dll
+*.db
+*.so
+*.dylib
+*.cache
+*.proj

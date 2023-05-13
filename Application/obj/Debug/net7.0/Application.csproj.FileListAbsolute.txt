@@ -1,0 +1,17 @@
+C:\REACT\loscielos\Application\bin\Debug\net7.0\Application.deps.json
+C:\REACT\loscielos\Application\bin\Debug\net7.0\Application.dll
+C:\REACT\loscielos\Application\bin\Debug\net7.0\Application.pdb
+C:\REACT\loscielos\Application\bin\Debug\net7.0\Domain.dll
+C:\REACT\loscielos\Application\bin\Debug\net7.0\Persistence.dll
+C:\REACT\loscielos\Application\bin\Debug\net7.0\Domain.pdb
+C:\REACT\loscielos\Application\bin\Debug\net7.0\Persistence.pdb
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.csproj.AssemblyReference.cache
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.AssemblyInfoInputs.cache
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.AssemblyInfo.cs
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.csproj.CoreCompileInputs.cache
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.csproj.CopyComplete
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.dll
+C:\REACT\loscielos\Application\obj\Debug\net7.0\refint\Application.dll
+C:\REACT\loscielos\Application\obj\Debug\net7.0\Application.pdb
+C:\REACT\loscielos\Application\obj\Debug\net7.0\ref\Application.dll
