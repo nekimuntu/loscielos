@@ -6,10 +6,10 @@ using Persistence;
 namespace API.Controllers
 {
 
-    public class CabinController : BaseApiController
+    public class CabinsController : BaseApiController
     {
         private readonly loscielosDbContext _context;
-        public CabinController(loscielosDbContext context)
+        public CabinsController(loscielosDbContext context)
         {
             _context = context;
         }
@@ -20,7 +20,7 @@ namespace API.Controllers
             return await _context.Cabins.ToListAsync();
         }
 
-        [HttpGet]
+        [HttpGet ("{id}")]
         public async Task<Cabin> GetCabin(Guid id)
         {
              return await _context.Cabins.FindAsync(id);
