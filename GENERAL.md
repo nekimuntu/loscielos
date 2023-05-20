@@ -63,3 +63,20 @@ Next step is : Folders structure
                                     J ai cree le controller et le BaseApiController 
 
 NEXT : creer sur postman les tests api de  get and List 
+                        ____________________________________________________________________________________
+
+                                    17 mai 2023 
+                                    J ai cree la police des CORS Cross-Origin Requests 
+                                    J ai implementer les requetes d'API sur POSTMAN 
+
+NEXT :
+1 -  Modifier Cabin class ajouter les proprietes prevues sur le diagramme (https://drawsql.app/teams/kimuntu-team/diagrams/loscielos-simple-diagram)
+
+prevoir la supression et creation d un nouveau fichier Migrations.cs 
+
+2 - Implementer une transaction sql qui modifie la notation des cabines  
+                        _____________________________________________________________________________________
+                                            Vendredi 19 mai 2023
+
+> dotnet ef -s API -p Persistence database drop 
+> dotnet ef migrations -s API -p Persistence remove

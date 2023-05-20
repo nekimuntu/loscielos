@@ -16,24 +16,32 @@ namespace Persistence
             {
                 new Cabin{
                     Name="Jose Maria Morelos Pavon",
-                    nbBeds=4,
+                    Nb_Bed=4,
+                    Total_Occupancy=8,
                     PictureUrl="assets/cabins/pict/4beds.jpg",
                     Available=true,
-                    DateRecorded=""
+                    Created_at="",
+                    Adress="Los Cielos Boca del Cielo 30513 Chiapas Mexico https://goo.gl/maps/g17CdcX635LQC8pA6",
+                    Longitude=15.845768,
+                    Latitude=93.668882
+
+                    
                 },
                 new Cabin{
                     Name="Vicente Guerrero",
-                    nbBeds=2,
+                    Nb_Bed=2,
+                    Total_Occupancy=4,
                     PictureUrl="assets/cabins/pict/2beds.jpg",
                     Available=true,
-                    DateRecorded=""
+                    Created_at=""
                 },
                 new Cabin{
                     Name="Juarez",
-                    nbBeds=1,
+                    Nb_Bed=1,
+                    Total_Occupancy=3,
                     PictureUrl="assets/cabins/pict/1beds.jpg",
                     Available=true,
-                    DateRecorded=""
+                    Created_at=""
                 },
             };
 
