@@ -1,28 +1,22 @@
 import React from 'react';
-import { Icon} from "semantic-ui-react";
+import { Icon, List } from "semantic-ui-react";
 
-export default function Footer(){
-    return(
-        <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <p className="col-md-4 mb-0 text-muted">© 2022 Company, Inc</p>
+export default function Footer() {
+    return (
+        <div>
+            <List floated='right' horizontal>
+                <List.Item disabled href='#'>
+                    © ConseilNago, Inc.
+                </List.Item>
+                <List.Item href='#'>Terms</List.Item>
+                <List.Item href='#'>Privacy</List.Item>
+                <List.Item href='#'>Contact</List.Item>
+            </List>
 
-            <a href="/" className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <Icon name="users" /></a>
-            
-
-            <ul className="nav col-md-4 justify-content-end">
-            <li className="nav-item">
-               <a href="." content="Test" className="nav-link px-2 text-muted"></a> Home </li>
-               
-               <li className="nav-item">
-                <a href="." content="Test" className="nav-link px-2 text-muted"></a> Adventures 
-               </li>
-                <li className="nav-item">
-                    <a href="." content="Test" className="nav-link px-2 text-muted"></a> Retreat 
-                </li>
-               <li className="nav-item">
-               <a href="." content="Test" className="nav-link px-2 text-muted"></a> About </li>
-            </ul>
-        </footer>
+            <List horizontal>
+                <List.Item href='#'>About Us</List.Item>
+                <List.Item href='#'>Jobs</List.Item>
+            </List>
+        </div>
     )
 }

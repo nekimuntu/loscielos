@@ -80,3 +80,18 @@ prevoir la supression et creation d un nouveau fichier Migrations.cs
 
 > dotnet ef -s API -p Persistence database drop 
 > dotnet ef migrations -s API -p Persistence remove
+
+                        __________________________________________________________________________________________
+                                            MArdi 13 Juin 2023 
+
+                                            JAI COMRPIS QUE :
+
+Dans la classe d entre du service API : Prorgam.cs 
+        Pour initialiser la migration du DbContext il est necessaire d appeler le service qui contient le dbContext 
+        Ce service est lui meme contenu dans un Scope 
+        
+        using var scope = app.Services.CreateScope();
+        var service = scope.ServiceProvider()
+        try{
+            context = service.GetService<DbContext>();
+        }

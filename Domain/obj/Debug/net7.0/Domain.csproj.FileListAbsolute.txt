@@ -10,3 +10,15 @@ C:\REACT\loscielos\Domain\obj\Debug\net7.0\Domain.dll
 C:\REACT\loscielos\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\REACT\loscielos\Domain\obj\Debug\net7.0\Domain.pdb
 C:\REACT\loscielos\Domain\obj\Debug\net7.0\ref\Domain.dll
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\bin\Debug\net7.0\Domain.deps.json
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\bin\Debug\net7.0\Domain.dll
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\bin\Debug\net7.0\Domain.pdb
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\Domain.dll
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\refint\Domain.dll
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\Domain.pdb
+C:\PROGRAMMING\CSHARP\WEBSITE\loscielos\Domain\obj\Debug\net7.0\ref\Domain.dll

@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Domain
 {
     public class Cabin
@@ -26,7 +21,8 @@ namespace Domain
         public string Created_at { get; set; }
          public string Update_At { get; set; }
         public string Published_at { get; set; }
-        public int Recorded_by { get; set; }    
+        public int Recorded_by { get; set; }           
+        public ICollection<Reservation> Reservations  { get; set; } 
 
     }
 }

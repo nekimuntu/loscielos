@@ -1,6 +1,5 @@
 import { ImageList,ImageListItem } from '@mui/material'
 import React from 'react'
-import { Card, Container, Grid, GridColumn, Image } from 'semantic-ui-react'
 const imageList =[
     {
         img:'/assets/picts/4.jpg',

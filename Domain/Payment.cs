@@ -1,16 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Domain
 {
     public class Payment
     {
         public int Id { get; set; }
-        public string Type  { get; set; }
+        public int Type_Id  { get; set; }
+        public PaymentType Type { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
+        public string Details { get; set; }
         public string Created_at { get; set; }  
         public string Updated_at { get; set; }
-        public int Recorded_by { get; set; }
+        public string Recorded_by { get; set; }
     }
 }

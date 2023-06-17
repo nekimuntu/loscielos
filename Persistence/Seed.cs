@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Domain;
 
 namespace Persistence
@@ -10,7 +6,7 @@ namespace Persistence
     {
         public static async Task SeedData(loscielosDbContext context)
         {
-            if (context.Cabins.Any()) return;
+            if (context.Cabins.Any() || context.Amenities.Any()) return;
 
             var cabins = new List<Cabin>
             {
@@ -45,6 +41,19 @@ namespace Persistence
                 },
             };
 
+            List<Amenity> amenities = new List<Amenity>{
+
+                new Amenity{
+                    Name="Kitchen",
+                    Description="Full Kitchen with Blender and 2 fridges"
+                },
+                 new Amenity{
+                    Name="Paddle Board",
+                    Description="Enjoy the beautiful landscape from the river while exercising on Paddle board"
+                },
+            };
+
+            await context.Amenities.AddRangeAsync(amenities);
             await context.Cabins.AddRangeAsync(cabins);
             await context.SaveChangesAsync();
         }

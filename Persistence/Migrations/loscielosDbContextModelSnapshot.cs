@@ -111,13 +111,16 @@ namespace Persistence.Migrations
                     b.Property<int>("Cabin_id")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("File_name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsValidated")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Media_type")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Mime_type")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("file_name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -134,31 +137,55 @@ namespace Persistence.Migrations
                     b.Property<string>("Created_at")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Recorded_by")
+                    b.Property<string>("Details")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Recorded_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("TypeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Type_Id")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Updated_at")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TypeId");
+
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("Domain.Reservation", b =>
+            modelBuilder.Entity("Domain.PaymentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentType");
+                });
+
+            modelBuilder.Entity("Domain.Reservation", b =>
+                {
+                    b.Property<Guid>("Cabin_id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Customer_id")
+                        .HasColumnType("TEXT");
+
                     b.Property<float>("Amount_Paid")
                         .HasColumnType("REAL");
-
-                    b.Property<int>("Cabin_id")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Checkin")
                         .HasColumnType("TEXT");
@@ -169,19 +196,29 @@ namespace Persistence.Migrations
                     b.Property<string>("Created_at")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Payment_id")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("Review_Id")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Updated_at")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("User_id")
-                        .HasColumnType("TEXT");
+                    b.HasKey("Cabin_id", "Customer_id");
 
-                    b.HasKey("Id");
+                    b.HasIndex("Customer_id");
+
+                    b.HasIndex("Payment_id");
+
+                    b.HasIndex("Review_Id")
+                        .IsUnique();
 
                     b.ToTable("Reservations");
                 });
@@ -198,65 +235,62 @@ namespace Persistence.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Reservation_id")
+                    b.Property<int>("Reservation_Id")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Update_At")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("Domain.Role", b =>
+            modelBuilder.Entity("Domain.RoleByUsers", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Created_at")
+                    b.Property<string>("Role_Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("User_Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Updated_at")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Updated_by")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("name")
-                        .HasColumnType("TEXT");
+                    b.HasKey("Role_Id", "User_Id");
 
-                    b.HasKey("id");
+                    b.HasIndex("User_Id");
 
-                    b.ToTable("Roles");
-                });
-
-            modelBuilder.Entity("Domain.RoleByUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Role_id")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles_by_users");
+                    b.ToTable("RoleByUsers");
                 });
 
             modelBuilder.Entity("Domain.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Created_at")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .HasMaxLength(256)
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
@@ -267,15 +301,376 @@ namespace Persistence.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Phone")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Profile_Image")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("MediaReview", b =>
+                {
+                    b.Property<int>("MediasId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ReviewsId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MediasId", "ReviewsId");
+
+                    b.HasIndex("ReviewsId");
+
+                    b.ToTable("MediaReview");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Role", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.Property<string>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Updated_by")
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue("Role");
+                });
+
+            modelBuilder.Entity("Domain.Payment", b =>
+                {
+                    b.HasOne("Domain.PaymentType", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeId");
+
+                    b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("Domain.Reservation", b =>
+                {
+                    b.HasOne("Domain.Cabin", "Cabin")
+                        .WithMany("Reservations")
+                        .HasForeignKey("Cabin_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.User", "Customer")
+                        .WithMany("Reservations")
+                        .HasForeignKey("Customer_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Payment", "Payment")
+                        .WithMany("Reservations")
+                        .HasForeignKey("Payment_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Review", "Review")
+                        .WithOne("Reservation")
+                        .HasForeignKey("Domain.Reservation", "Review_Id");
+
+                    b.Navigation("Cabin");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Payment");
+
+                    b.Navigation("Review");
+                });
+
+            modelBuilder.Entity("Domain.RoleByUsers", b =>
+                {
+                    b.HasOne("Domain.Role", "Role")
+                        .WithMany("RoleByUsers")
+                        .HasForeignKey("Role_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.User", "User")
+                        .WithMany("RoleByUsers")
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MediaReview", b =>
+                {
+                    b.HasOne("Domain.Media", null)
+                        .WithMany()
+                        .HasForeignKey("MediasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Review", null)
+                        .WithMany()
+                        .HasForeignKey("ReviewsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Domain.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Cabin", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("Domain.Payment", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("Domain.Review", b =>
+                {
+                    b.Navigation("Reservation");
+                });
+
+            modelBuilder.Entity("Domain.User", b =>
+                {
+                    b.Navigation("Reservations");
+
+                    b.Navigation("RoleByUsers");
+                });
+
+            modelBuilder.Entity("Domain.Role", b =>
+                {
+                    b.Navigation("RoleByUsers");
                 });
 #pragma warning restore 612, 618
         }

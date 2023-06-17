@@ -1,6 +1,4 @@
-import { IncomingMessage } from "http";
-import React from "react";
-import { Icon, ItemContent, Item, Segment, SegmentGroup, Image, Button, Label } from "semantic-ui-react";
+import { Icon, Item, Segment, Image, Button, Label } from "semantic-ui-react";
 
 function CabinsListItem(){
     return(
@@ -18,10 +16,10 @@ function CabinsListItem(){
                 </Item>
             </Segment>
             <Segment>
-               <Image.Group  size="small">
-                    <Image centered src='/assets/picts/1.jpg' />
-                    <Image src='/assets/picts/1.jpg' />
-                    <Image src='/assets/picts/1.jpg' />
+               <Image.Group  size="large">
+                    <Image centered src='/assets/cabins/picts/1beds.jpg' />
+                    <Image src='/assets/cabins/picts/1beds_2.jpg' />
+                    <Image size="medium" src='/assets/cabins/picts/1beds_3.jpg' />
                </Image.Group>        
             </Segment>
 
